@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ListBoxText.DataModels;
 
 namespace ListBoxText
 {
@@ -16,6 +17,8 @@ namespace ListBoxText
     /// </summary>
     public class ItemObject
     {
+        //LOCAL FIELDS
+
         /// <summary>
         /// ParentID is an alpha number equivalent where
         /// 0 = a, 1 = b ...
@@ -38,6 +41,10 @@ namespace ListBoxText
         /// </summary>
         string ThisItemID;
 
+        int ItemsNumberOfChildren;
+
+        string ItemsDataString;
+
         //CONSTRUCTOR
 
         /// <summary>
@@ -56,6 +63,11 @@ namespace ListBoxText
             ThisItemID = parentID+returnItemAlphaNumber();
             //  create the string to show in the list boxes for this item
             ThisItemsListString = returnItemListString();
+            this.ItemsDataString = "";
+            this.ItemsNumberOfChildren = 0;
+            addItemToDictionary();
+
+
         }
 
         
@@ -146,8 +158,7 @@ namespace ListBoxText
         /// <returns></returns>
         private string returnItemListString()
         {
-            string thisItemsListString = "";
-
+            string thisItemsListString;
             if (CurrentItemsNumberOfChildren > 0)
             {
                 thisItemsListString = "+ ";
@@ -164,9 +175,18 @@ namespace ListBoxText
             return thisItemsListString;
         }
 
+        private void sendItemToItemDictionary()
+        {
+            // Items in string array: itemID, ItemText, AlphaBase, NumberOfChildrenString, delimitedDataString
+
+            string[] itemStringArray = { ThisItemID, ItemText, AlphaBase.ToString(), ItemsNumberOfChildren.ToString(), ItemsDataString };
         
+        }
 
-
+        private void addItemToDictionary()
+        {
+            Subjects.AddItemToDictionary(ThisItemID, this);
+        }
 
     }// End class
 }

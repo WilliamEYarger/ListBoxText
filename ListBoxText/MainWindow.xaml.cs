@@ -28,22 +28,39 @@ namespace ListBoxText
             InitializeComponent();
         }
 
-        private void btnAdd_Click(object sender, RoutedEventArgs e)
+        private void Click_FileOpen(object sender, RoutedEventArgs e)
         {
-            if(tbxName.Text != "")
-            {
-                lbx1.Items.Add(tbxName.Text);
-            }
+            MessageBox.Show("Open files");
         }
 
-        private void lbx1_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        private void Click_FileSave(object sender, RoutedEventArgs e)
         {
-          
-            if(lbx1.SelectedItem != null)
-            {
-                MessageBox.Show("You Double clicked" + lbx1.SelectedItem.ToString());
-            }
-            
+            MessageBox.Show("Save files");
+        }
+
+        private void Click_Exit(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void Click_AddRootItem(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Add Root Element");
+        }
+
+        private void Click_AddChildItem(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Add Child Element");
+        }
+
+        private void Click_MoveToTree(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Move Selected Item to Tree");
+        }
+
+        private void Click_OpenWorkPage(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Open selected Items work page");
         }
     }
 }

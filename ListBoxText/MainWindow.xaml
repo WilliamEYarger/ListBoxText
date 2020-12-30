@@ -5,38 +5,91 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ListBoxText"
         mc:Ignorable="d"
-        Title="MainWindow" Height="650" Width="1000">
-   
+        Title="MainWindow" Height="750" Width="1000"
+        WindowStartupLocation="Manual"
+        Left="200" Top="0"
+        WindowStyle="None">
     <Window.Resources>
-        <Style TargetType="ListBoxItem">
-            <Setter Property="FontSize" Value="24"/>
+        <Style TargetType="MenuItem" >
+            <Setter Property="FontSize" Value="18"/>
         </Style>
     </Window.Resources>
+    
     <Grid>
+
         <Grid.ColumnDefinitions>
-            <ColumnDefinition />
-            <ColumnDefinition />            
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <StackPanel Grid.Column="0">
-            <TextBlock Text="Select Subject" FontSize ="20"/>
-            <ListBox x:Name="lbx1"  
-                     MouseDoubleClick="lbx1_MouseDoubleClick"
-                     Height="500">
-                <!--<ListBoxItem>Item 1</ListBoxItem>-->
-            </ListBox>
-            <StackPanel VerticalAlignment="Bottom" Height="70">
-                <Button x:Name="btnAdd" Content="Add"
-                    Click="btnAdd_Click"/>
-                <TextBox x:Name="tbxName" FontSize="18"/>
-                <Button x:Name="btnDelete" Content="Delete"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="10"/>
+        </Grid.RowDefinitions>
+        <Menu Grid.Row="0">
+            <MenuItem Header="_File">
+                <MenuItem x:Name="FileOpen" 
+                          Header="Open Data Files"
+                          Click="Click_FileOpen"/>
+                <MenuItem x:Name="FileSave"
+                          Header="Save Data Files"
+                          Click="Click_FileSave"/>
+                <Separator/>
+                <MenuItem x:Name="ExitApplication"
+                          Header="Exit"
+                          Click="Click_Exit"/>
+            </MenuItem>
+            <MenuItem  Header="_Items">
+                <MenuItem x:Name="AddRootItem"
+                    Header="Add Root Item"
+                    Click="Click_AddRootItem"/>
+                <MenuItem x:Name="AddChildItem"
+                          ToolTip="You Must select an Item in the Tree List Box before adding a child"
+                          Header="Add Child Item"
+                          Click="Click_AddChildItem"/>
+            </MenuItem>
+            <MenuItem Header="Selected Item">
+                <MenuItem Header="Move to Tree"
+                          x:Name="MoveToTree"
+                          Click="Click_MoveToTree"/>
+                <MenuItem Header="Open Selected Item Work Page"
+                          x:Name="OpenWorkPage"
+                          Click="Click_OpenWorkPage"/>
+            </MenuItem>  
+            
+        </Menu>
+        <TextBlock Text="Items" FontSize="18" Grid.Column="0" 
+                   Grid.Row="1" HorizontalAlignment="Center"/>
+        <TextBlock  Text="Tree" FontSize="18" Grid.Column="1"
+                    Grid.Row="1" HorizontalAlignment="Center"/>
 
-            </StackPanel>
+        <ListBox x:Name="lbxItems" Grid.Row ="2" Grid.Column="0"/>
+        <ListBox x:Name="lbxTree" Grid.Row="2" Grid.Column="1"/>
+        <StackPanel Grid.Row="3" Grid.ColumnSpan="2"
+            Orientation="Horizontal" Height="35">
+            <TextBlock Text="Enter Item Text"
+                      FontSize="18" Height="26"
+                       Width="300"
+                       TextAlignment="Center"/>
+            <TextBox x:Name="tbxItemText" Width="400" Height="26"
+                     FontSize="18" Margin="20,5"/>
+            <CheckBox x:Name="ckbxTerminal" Content ="Terminal"
+                       VerticalAlignment="Center"
+                      FontSize="18"/>
         </StackPanel>
-        <StackPanel Grid.Column="1">
-            <TextBlock Text="Subject Tree" FontSize="20"/>
-            <ListBox x:Name="lbx2"/>
+        <StackPanel Grid.Row="4" Grid.ColumnSpan="2"
+                     Orientation="Horizontal" Height="35"
+                    >
+            <TextBlock Text="Enter Item Accessory Data"
+                      FontSize="18" Height="26"
+                       Width="300"
+                       TextAlignment="Center"/>
+            <TextBox x:Name="tbxAccessoryext" Width="400" Height="26"
+                     FontSize="18" Margin="20,5"/>   
         </StackPanel>
-
         
     </Grid>
 </Window>
