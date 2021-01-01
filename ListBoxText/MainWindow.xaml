@@ -13,7 +13,9 @@
         <Style TargetType="MenuItem" >
             <Setter Property="FontSize" Value="18"/>
         </Style>
-    </Window.Resources>
+        <Style TargetType="ListBox">
+            <Setter Property="FontSize" Value="18"/>
+        </Style>    </Window.Resources>
     
     <Grid>
 
@@ -51,10 +53,12 @@
                           Header="Add Child Item"
                           Click="Click_AddChildItem"/>
             </MenuItem>
-            <MenuItem Header="Selected Item">
+            <MenuItem Header="_Selected Item">
                 <MenuItem Header="Move to Tree"
                           x:Name="MoveToTree"
-                          Click="Click_MoveToTree"/>
+                          Click="Click_MoveToTree"
+                          ToolTip="You must select an item in the Items ListBox before clicking this Menu item"
+                          />
                 <MenuItem Header="Open Selected Item Work Page"
                           x:Name="OpenWorkPage"
                           Click="Click_OpenWorkPage"/>

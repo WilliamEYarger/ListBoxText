@@ -16,9 +16,18 @@ namespace ListBoxText.DataModels
 
         public static Dictionary<string, ItemObject> ItemObjectDictionary = new Dictionary<string, ItemObject>();
 
-        public static void AddItemToDictionary(string itemID, ItemObject newItemObject) => ItemObjectDictionary.Add(itemID,newItemObject);
+        public static void AddItemToDictionary(string itemID, ItemObject newItemObject) => ItemObjectDictionary.Add(itemID, newItemObject);
+
+        public static void UpdateDictionaryItem(string itemID, ItemObject newItemObject)
+        {
+            ItemObjectDictionary[itemID] = newItemObject;
+        }
 
 
+        public static ItemObject ReturnSelectedItemObject(string ItemName)
+        {
+            return ItemObjectDictionary[ItemName];
+        }
 
     }
 }

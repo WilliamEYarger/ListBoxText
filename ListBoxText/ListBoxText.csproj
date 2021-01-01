@@ -63,8 +63,9 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="DataModels\ItemClass.cs" />
+    <Compile Include="DataModels\ItemObject.cs" />
     <Compile Include="DataModels\Subjects.cs" />
+    <Compile Include="Helper Methods\DelimitedStringHelperClass.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
